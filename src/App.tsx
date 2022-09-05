@@ -10,7 +10,7 @@ import NoResult from './components/NoResult';
 function App() {
   const searchUrl =
     'https://coursetreesearch-service-sandbox.dev.tophat.com/treesearch/';
-  const [showResult, setShowResult] = useState(false);
+  const [showResult, setShowResult] = useState<boolean>(false);
   const [{ data, loading, error }, getSearchData] = useAxios(
     {
       url: searchUrl,

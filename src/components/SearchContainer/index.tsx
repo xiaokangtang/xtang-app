@@ -26,7 +26,6 @@ const SearchContainer = ({ onSubmit }: SearchContainerProps) => {
   });
 
   const onSubmitClick = () => {
-    console.log(searchValue);
     if (!searchValue) {
       setSearchEmpty(true);
     }
@@ -37,7 +36,11 @@ const SearchContainer = ({ onSubmit }: SearchContainerProps) => {
     <div className="flex flex-col p-10 w-1/2">
       <div className="flex justify-center items-center">
         <div className="flex-1">
+          <label className="sr-only" htmlFor="search_input">
+            enter text to search
+          </label>
           <input
+            id="search_input"
             className="rounded-md border p-3 text-16 w-full"
             placeholder="Search"
             onChange={(e) => debouncedSearch(e.target.value)}
@@ -52,7 +55,7 @@ const SearchContainer = ({ onSubmit }: SearchContainerProps) => {
         </button>
       </div>
       {searchEmpty && (
-        <p className="text-sm font-light text-rose-700">
+        <p aria-live="polite" className="text-sm font-light text-rose-700">
           Please enter some text
         </p>
       )}
