@@ -27,11 +27,10 @@ const SearchContainer = ({ onSubmit }: SearchContainerProps) => {
 
   const onSubmitClick = () => {
     console.log(searchValue);
-    if (searchValue) {
-      onSubmit(searchValue);
-    } else {
+    if (!searchValue) {
       setSearchEmpty(true);
     }
+    onSubmit(searchValue);
   };
 
   return (

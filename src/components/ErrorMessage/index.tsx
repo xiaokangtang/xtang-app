@@ -1,7 +1,14 @@
 const ErrorMessage = ({ error }: any) => {
-  if (error && error.message) {
-    return <div>{error.message}</div>;
-  }
-  return <div>unknown issue</div>;
+  return (
+    <div className="text-rose-700">
+      <p>
+        {' '}
+        {error && error.message
+          ? error.message
+          : 'Search Reuqest failed with an unknown issue.'}
+      </p>
+      <p>Please try again.</p>
+    </div>
+  );
 };
 export default ErrorMessage;

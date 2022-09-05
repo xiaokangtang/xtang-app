@@ -1,4 +1,6 @@
-export function useMapDataToTree(dataArray: any[]) {
+import { TData } from './components/DataContainer';
+
+export function useMapDataToTree(dataArray: TData[]) {
   const resultMap = new Map();
   dataArray.forEach((dataEntry) => {
     dataEntry.children = [];

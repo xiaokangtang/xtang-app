@@ -1,23 +1,30 @@
 import { useMapDataToTree } from '../../utils';
 
+export interface TData {
+  id: number;
+  name: string;
+  parent_id: number;
+  children?: any[];
+}
 interface DataContainerProps {
-  data: any[];
+  data: TData[];
 }
 
 const DataContainer = ({ data }: DataContainerProps) => {
   const resultTrees = useMapDataToTree(data);
-  console.log(resultTrees);
-  let string = '';
-  const renderString = (tree: any, level: number) => {
-    const dashes = level > 0 ? '-'.repeat(level) : '';
-    string += `${dashes} ${tree.name} </br>`;
-    tree.children.forEach((child: any) => renderString(child, level + 1));
-  };
 
-  const treeRoot = data
+  const treeRoots = data
     .filter((dataEntry) => dataEntry['parent_id'] === 0)
     .map((dataEntry) => resultTrees.get(dataEntry['id']));
-  treeRoot.forEach((resultTree) => renderString(resultTree, 0));
+
+  let string = '';
+  const renderString = (tree: TData, level: number) => {
+    const dashes = level > 0 ? '-'.repeat(level) : '';
+    string += `${dashes} ${tree.name} </br>`;
+    tree?.children?.forEach((child: TData) => renderString(child, level + 1));
+  };
+
+  treeRoots.forEach((treeRoot) => renderString(treeRoot, 0));
 
   return <code dangerouslySetInnerHTML={{ __html: string }} />;
 };

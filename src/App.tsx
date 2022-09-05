@@ -20,13 +20,15 @@ function App() {
   );
 
   const onSubmit = (value: string) => {
-    console.log(value);
-    getSearchData({ params: { query: value } });
-    setShowResult(true);
+    if (value) {
+      getSearchData({ params: { query: value } });
+      setShowResult(true);
+    } else {
+      setShowResult(false);
+    }
   };
 
   const renderResultArea = useCallback(() => {
-    console.log(data);
     if (loading) {
       return <div>loading...</div>;
     }
@@ -39,6 +41,7 @@ function App() {
     }
     return <ErrorMessage error={error} />;
 
+    //Below is mock data for testing purpose only
     // const mockData = [
     //   { id: 5, name: 'Chemical Kinetics', parent_id: 6 },
     //   { id: 3, name: 'Surface Chemistry', parent_id: 1 },
@@ -48,7 +51,6 @@ function App() {
     //   { id: 6, name: 'Lab Experiment 2', parent_id: 0 },
     //   { id: 7, name: 'Colloidal Solution of Gum', parent_id: 3 },
     // ];
-
     // return <DataContainer data={mockData} />;
   }, [data, loading, error]);
 
