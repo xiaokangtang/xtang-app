@@ -1,5 +1,6 @@
 import './App.css';
 import useAxios from 'axios-hooks';
+import { ErrorBoundary } from 'react-error-boundary';
 import SearchContainer from './components/SearchContainer';
 import { useCallback, useEffect, useState } from 'react';
 import DataContainer from './components/DataContainer';
@@ -34,7 +35,11 @@ function App() {
     }
     if (!error && data && data.body) {
       return data.body.length > 0 ? (
-        <DataContainer data={data.body} />
+        <>
+          <ErrorBoundary FallbackComponent={ErrorMessage}>
+            <DataContainer data={data.body} />
+          </ErrorBoundary>
+        </>
       ) : (
         <NoResult />
       );
