@@ -16,7 +16,7 @@ const Filter: React.FC<FilterProps> = ({ categories, onSelectChange }) => {
                                 focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 
                                 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 onChange={onSelectChange}>
-                {categories.map((category) => <option value={category}>{category}</option>)}
+                {categories.map((category) => <option key={category} value={category}>{category}</option>)}
 
             </select></>
     )

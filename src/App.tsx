@@ -11,10 +11,11 @@ import ProductsContainer from './containers/ProductsContainer';
 import Filter from './containers/Filter';
 import CartContainer from './containers/CartContainer';
 
+export const url =
+  'http://localhost:8080/api/products';
 
 const App: React.FC = () => {
-  const url =
-    'http://localhost:8080/api/products';
+
 
 
   const [products, setProducts] = useState<Product[]>([])

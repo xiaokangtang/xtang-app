@@ -1,4 +1,4 @@
 const NoResult = () => {
-  return <div aria-live="polite">cannot find any result</div>;
+  return <div role='alert'>We cannot find any product available</div>;
 };
 export default NoResult;
