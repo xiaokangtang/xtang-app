@@ -14,7 +14,7 @@ const ProductsContainer: React.FC<ProductsContainerProps> = ({ displayedProducts
     }, [addProductToCart])
     return (
         <>
-            <h2 className="text-xl font-semibold dark:text-white mb-4">There are {displayedProducts.length} product(s) available</h2>
+            <h2 className="text-xl font-semibold mb-4">There are {displayedProducts.length} product(s) available</h2>
             <ProductsTable products={displayedProducts} hasAddButton={true} onProductAdd={onProductAdd} />
         </>
 
